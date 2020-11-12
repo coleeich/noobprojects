@@ -1,0 +1,81 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void moveWords(int board[][10]){
+    int temp;
+    for(int i = 9; i >= 0; i--){
+        for(int j = 0; j < 10; j++){
+            if (board[i][j] != 1){
+                if (i == 10){
+                    //Game over
+                    printf("Game over");
+                    exit(0);
+                }
+                    // add a check to see if the right word was typed in
+                else {
+                    temp = board[i][j];
+                    board[i+1][j] = temp;
+                    board[i][j] = 1;
+                }
+            }
+        }
+    }
+}
+void printBoard(int board[][10]){
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 10; j++){
+            printf("|%4d|", board[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void updateBoard(int board[][10]){
+    int word1[10] = {2340,2341,2342,2343,2344,2345,2346,2347,2348,2349};
+    int lower = 0, upper = 9, count = 1;
+    int num;
+    num = (rand() % (upper - lower + 1)) + lower;
+    board[0][num] = word1[num];
+    printBoard(board);
+    moveWords(board);
+}
+
+int main(){
+//get random number
+    int word1[10] = {2340,2341,2342,2343,2344,2345,2346,2347,2348,2349};
+    int board[10][10] = {
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    };
+
+    int lower = 0, upper = 9, count = 1;
+    int num;
+    srand(time(NULL));
+    for (int i = 0; i < 10; i++){
+        int question;
+        printf("Would you like another word? (1 for yes/0 for no)\n");
+        scanf("%d", &question);
+        if (question == 1){
+            updateBoard(board);
+        }
+        if (question == 0){
+            printf("Game Over\n");
+            exit(0);
+        }
+        else
+            printf("Please enter a 1 or 0\n");
+
+
+    }
+
+}
