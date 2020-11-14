@@ -21,8 +21,8 @@ int main(){
 		}
 	}
 	FILE *fp;
-	printf("Hello, this is a typing game. You will need to type the words as they" 
-	"appear.\nWould you like to play or add a word?\n(Type ‘p’ for play or ‘a’ to add words)");
+	printf("Hello, this is a typing game. You will need to type the words as they " 
+	"appear.\nWould you like to play or add a word?\n(Type ‘p’ for play or ‘a’ to add words)\n");
     scanf(" %c", &playOrAdd);
     srand(time(NULL));
 	printf("Enter p to play or anything else to exit\n");
